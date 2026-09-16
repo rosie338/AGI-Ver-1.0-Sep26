@@ -368,7 +368,7 @@ numberresults = pd.DataFrame({
 })
 
 #current results
-st.write("Current Requirements (mA)")
+st.subheader("Current Requirements (mA)")
 st.dataframe(
     currentresults,
     use_container_width=True,
@@ -376,7 +376,7 @@ st.dataframe(
 )
 
 #printing amode mass requirement results
-st.write("Anode Mass Required (kg)")
+st.subheader("Anode Mass Required (kg)")
 st.dataframe(
     massresults,
     use_container_width=True,
@@ -384,7 +384,7 @@ st.dataframe(
 )
 
 #printing anode design results
-st.write("Anode Design Results")
+st.subheader("Anode Design Results")
 anoderesults = pd.DataFrame({
     "Parameter": [
         "Anode Resistance at 100%",
@@ -404,7 +404,7 @@ st.dataframe(
     hide_index=True)
 
 #printing number of anodes resuts
-st.write("Number of anodes required to meet end of life current requirement for each pipe")
+st.subheader("Number of anodes required to meet end of life current requirement for each pipe")
 st.dataframe(
     numberresults,
     use_container_width=True,
@@ -418,7 +418,7 @@ totalnumber = pd.DataFrame({
     "Average": [total_anodes[2]]
 })
 
-st.write("Number of Anodes Grand Total for AGI")
+st.subheader("Number of Anodes Grand Total for AGI")
 st.dataframe(
     totalnumber,
     use_container_width=True,
