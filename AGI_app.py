@@ -8,20 +8,7 @@ import pandas as pd
 
 st.title("AGI Magnesium Anode Calculation")
 
-safety_factor = 1.5
-design_life = 15 #yr
-anode_capacity = 1230 #A.hr/kg
-anode_diameter = 0.146 #m
-anode_length = 0.508 #m
-AU_efficiency = 0.8 #80% (anode utilisation efficiency)
-TDHA_depth = 3 #m (twice depth of horizontal anode burial)
-AOC_potential = -1.7 #V (anode oped circuit potential)
-PP_potential = -0.95 #V (pipeline polarised potential)
-anode_mass = 7.7 #kg
-soil_res = 1000 #Ωm
-
-import streamlit as st
-
+st.header("Input parameters")
 safety_factor = st.number_input("Safety factor", value=1.5)
 
 design_life = st.number_input("Design life (yr)", value=15)
