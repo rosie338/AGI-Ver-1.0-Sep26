@@ -3,31 +3,36 @@ import math
 import streamlit as st
 import pandas as pd
 
+st.set_page_config(
+    page_title="AGI Calculator",
+    page_icon="logo.png",
+    layout="wide"
+)
 
 st.title("AGI Magnesium Anode Calculation")
+with st.sidebar:
+    st.header("Input parameters")
+    safety_factor = st.number_input("Safety factor", value=1.5)
 
-st.header("Input parameters")
-safety_factor = st.number_input("Safety factor", value=1.5)
+    design_life = st.number_input("Design life (yr)", value=15)
 
-design_life = st.number_input("Design life (yr)", value=15)
+    anode_capacity = st.number_input("Anode capacity (A.hr/kg)", value=1230)
 
-anode_capacity = st.number_input("Anode capacity (A.hr/kg)", value=1230)
+    anode_diameter = st.number_input("Anode diameter (m)", value=0.146)
 
-anode_diameter = st.number_input("Anode diameter (m)", value=0.146)
+    anode_length = st.number_input("Anode length (m)", value=0.508)
 
-anode_length = st.number_input("Anode length (m)", value=0.508)
+    AU_efficiency = st.number_input("Anode utilisation efficiency", value=0.8)
 
-AU_efficiency = st.number_input("Anode utilisation efficiency", value=0.8)
+    TDHA_depth = st.number_input("TDHA depth (m)", value=3.0)
 
-TDHA_depth = st.number_input("TDHA depth (m)", value=3.0)
+    AOC_potential = st.number_input("Anode open circuit potential (V)", value=-1.7)
 
-AOC_potential = st.number_input("Anode open circuit potential (V)", value=-1.7)
+    PP_potential = st.number_input("Pipeline polarised potential (V)", value=-0.95)
 
-PP_potential = st.number_input("Pipeline polarised potential (V)", value=-0.95)
+    anode_mass = st.number_input("Anode mass (kg)", value=7.7)
 
-anode_mass = st.number_input("Anode mass (kg)", value=7.7)
-
-soil_res = st.number_input("Soil resistivity (Ωm)", value=1000)
+    soil_res = st.number_input("Soil resistivity (Ωm)", value=1000)
 
 parameters = {
 
@@ -51,6 +56,7 @@ import numpy as np
 # PIPE INPUT FUNCTION
 # ============================================================
 st.header("Input Pipe Dimensions")
+left, right = st.columns ([2,2])
 def pipe_zone_input(zone):
 
     # Initialise number of pipes for this zone
@@ -118,18 +124,18 @@ def pipe_zone_input(zone):
 #============================================
 # Display results on GUI
 #============================================
+with left:
+    with st.expander("Zone 1", expanded=False):
+        dzone1, lzone1 = pipe_zone_input(1)
 
-with st.expander("Zone 1", expanded=True):
-    dzone1, lzone1 = pipe_zone_input(1)
+    with st.expander("Zone 2"):
+        dzone2, lzone2 = pipe_zone_input(2)
+with right:
+    with st.expander("Zone 3"):
+        dzone3, lzone3 = pipe_zone_input(3)
 
-with st.expander("Zone 2"):
-    dzone2, lzone2 = pipe_zone_input(2)
-
-with st.expander("Zone 3"):
-    dzone3, lzone3 = pipe_zone_input(3)
-
-with st.expander("Zone 4"):
-    dzone4, lzone4 = pipe_zone_input(4)
+    with st.expander("Zone 4"):
+        dzone4, lzone4 = pipe_zone_input(4)
 
 #============================================
 # Current Density Values
