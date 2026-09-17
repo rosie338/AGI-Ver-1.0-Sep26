@@ -4,7 +4,3 @@ backgroundColor = "#F9F1E0"
 secondaryBackgroundColor = "#D2D8D6"
 textColor = "#523C30"
 font = "Calibri"
-st.set_page_config(
-    page_title="AGI Calculator",
-    page_icon="logo.png",
-    layout="wide"
