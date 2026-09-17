@@ -3,11 +3,11 @@ import math
 import streamlit as st
 import pandas as pd
 
-#st.set_page_config(
-#    page_title="AGI Calculator",
- #   page_icon="logo.png",
-  #  layout="wide"
-#)
+st.set_page_config(
+    page_title="AGI Calculator",
+    page_icon="logo.png",
+    layout="wide"
+)
 
 st.title("AGI Magnesium Anode Calculation")
 with st.sidebar:
